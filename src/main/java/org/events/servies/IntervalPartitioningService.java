@@ -57,6 +57,7 @@ public class IntervalPartitioningService {
     public Flux<Schedule> findByClassName(@NonNull String className) {
         return scheduleRepository.findByClassName(className);
     }
+
     private Mono<Boolean> isAvailable(String className, LocalDateTime startTime, LocalDateTime endTime) {
         return scheduleRepository.findByClassName(className)
                 .filter(schedule -> !startTime.isAfter(schedule.getEndTime()) && !endTime.isBefore(schedule.getStartTime()))
