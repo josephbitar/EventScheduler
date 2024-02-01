@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: my-mongo-db
+    ports:
+      - "27017:27017"  # Expose MongoDB port
+    networks:
+      - my-network
+
+#  spring-app:
+#    image: your-spring-boot-image:latest  # Replace with your Spring Boot image name
+#    container_name: spring-boot-app
+#    ports:
+#      - "8080:8080"  # Expose Spring Boot application port
+#    environment:
+#      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/mydatabase  # MongoDB connection URI
+#    depends_on:
+#      - mongodb
+#    networks:
+#      - my-network
+
+networks:
+  my-network:
+    driver: bridge
